@@ -12,9 +12,9 @@ import ComposableArchitecture
 struct TCA_Basics_TutorialApp: App {
     var body: some Scene {
         WindowGroup {
-            PlusMinusButton(store: .init(initialState: AddToCartDomain.State()) {
-                AddToCartDomain()
-            })
+            ProductCell(store: .init(initialState: ProductDomain.State(product: Product.sample[0]), reducer: {
+                ProductDomain()
+            }))
         }
     }
 }

@@ -17,6 +17,9 @@
 		A3471C362AA9E75000076AC2 /* AddToCartDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3471C352AA9E75000076AC2 /* AddToCartDomain.swift */; };
 		A3471C3D2AAA031400076AC2 /* PlusMinusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3471C3C2AAA031400076AC2 /* PlusMinusButton.swift */; };
 		A3471C3F2AAA03E600076AC2 /* AddToCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3471C3E2AAA03E600076AC2 /* AddToCardButton.swift */; };
+		A3471C412AAA05AA00076AC2 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3471C402AAA05AA00076AC2 /* Product.swift */; };
+		A3471C432AAA05EE00076AC2 /* ProductDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3471C422AAA05EE00076AC2 /* ProductDomain.swift */; };
+		A3471C452AAA117200076AC2 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3471C442AAA117200076AC2 /* ProductCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		A3471C352AA9E75000076AC2 /* AddToCartDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartDomain.swift; sourceTree = "<group>"; };
 		A3471C3C2AAA031400076AC2 /* PlusMinusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusMinusButton.swift; sourceTree = "<group>"; };
 		A3471C3E2AAA03E600076AC2 /* AddToCardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCardButton.swift; sourceTree = "<group>"; };
+		A3471C402AAA05AA00076AC2 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		A3471C422AAA05EE00076AC2 /* ProductDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDomain.swift; sourceTree = "<group>"; };
+		A3471C442AAA117200076AC2 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +153,9 @@
 		A3471C372AA9F7F000076AC2 /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				A3471C402AAA05AA00076AC2 /* Product.swift */,
+				A3471C422AAA05EE00076AC2 /* ProductDomain.swift */,
+				A3471C442AAA117200076AC2 /* ProductCell.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -296,8 +305,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3471C3D2AAA031400076AC2 /* PlusMinusButton.swift in Sources */,
+				A3471C432AAA05EE00076AC2 /* ProductDomain.swift in Sources */,
 				A3471C362AA9E75000076AC2 /* AddToCartDomain.swift in Sources */,
+				A3471C412AAA05AA00076AC2 /* Product.swift in Sources */,
 				A3471C3F2AAA03E600076AC2 /* AddToCardButton.swift in Sources */,
+				A3471C452AAA117200076AC2 /* ProductCell.swift in Sources */,
 				A3471C082AA9CF3E00076AC2 /* TCA_Basics_TutorialApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
