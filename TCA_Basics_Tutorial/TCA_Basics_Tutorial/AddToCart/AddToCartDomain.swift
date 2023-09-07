@@ -8,23 +8,23 @@
 import Foundation
 import ComposableArchitecture
 
-struct CounterDomain: Reducer {
+struct AddToCartDomain: Reducer {
     struct State: Equatable {
-        var counter = 0
+        var count = 0
     }
 
     enum Action: Equatable {
-        case increaseCounter
-        case decreaseCounter
+        case didTapPlusButton
+        case didTapMinusButton
     }
     
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
-        case .increaseCounter:
-            state.counter += 1
+        case .didTapPlusButton:
+            state.count += 1
             return .none
-        case .decreaseCounter:
-            state.counter -= 1
+        case .didTapMinusButton:
+            state.count -= 1
             return .none
         }
     }

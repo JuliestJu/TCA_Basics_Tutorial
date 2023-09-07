@@ -8,14 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		A3471C082AA9CF3E00076AC2 /* TCA_Basics_TutorialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3471C072AA9CF3E00076AC2 /* TCA_Basics_TutorialApp.swift */; };
-		A3471C0A2AA9CF3E00076AC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3471C092AA9CF3E00076AC2 /* ContentView.swift */; };
 		A3471C0C2AA9CF4000076AC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3471C0B2AA9CF4000076AC2 /* Assets.xcassets */; };
 		A3471C0F2AA9CF4000076AC2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3471C0E2AA9CF4000076AC2 /* Preview Assets.xcassets */; };
 		A3471C192AA9CF4000076AC2 /* TCA_Basics_TutorialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3471C182AA9CF4000076AC2 /* TCA_Basics_TutorialTests.swift */; };
 		A3471C232AA9CF4000076AC2 /* TCA_Basics_TutorialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3471C222AA9CF4000076AC2 /* TCA_Basics_TutorialUITests.swift */; };
 		A3471C252AA9CF4000076AC2 /* TCA_Basics_TutorialUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3471C242AA9CF4000076AC2 /* TCA_Basics_TutorialUITestsLaunchTests.swift */; };
 		A3471C332AA9D12500076AC2 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = A3471C322AA9D12500076AC2 /* ComposableArchitecture */; };
-		A3471C362AA9E75000076AC2 /* CounterDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3471C352AA9E75000076AC2 /* CounterDomain.swift */; };
+		A3471C362AA9E75000076AC2 /* AddToCartDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3471C352AA9E75000076AC2 /* AddToCartDomain.swift */; };
+		A3471C3D2AAA031400076AC2 /* PlusMinusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3471C3C2AAA031400076AC2 /* PlusMinusButton.swift */; };
+		A3471C3F2AAA03E600076AC2 /* AddToCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3471C3E2AAA03E600076AC2 /* AddToCardButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,6 @@
 /* Begin PBXFileReference section */
 		A3471C042AA9CF3E00076AC2 /* TCA_Basics_Tutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TCA_Basics_Tutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3471C072AA9CF3E00076AC2 /* TCA_Basics_TutorialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCA_Basics_TutorialApp.swift; sourceTree = "<group>"; };
-		A3471C092AA9CF3E00076AC2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A3471C0B2AA9CF4000076AC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3471C0E2AA9CF4000076AC2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A3471C142AA9CF4000076AC2 /* TCA_Basics_TutorialTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TCA_Basics_TutorialTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,7 +46,9 @@
 		A3471C1E2AA9CF4000076AC2 /* TCA_Basics_TutorialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TCA_Basics_TutorialUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3471C222AA9CF4000076AC2 /* TCA_Basics_TutorialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCA_Basics_TutorialUITests.swift; sourceTree = "<group>"; };
 		A3471C242AA9CF4000076AC2 /* TCA_Basics_TutorialUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCA_Basics_TutorialUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		A3471C352AA9E75000076AC2 /* CounterDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterDomain.swift; sourceTree = "<group>"; };
+		A3471C352AA9E75000076AC2 /* AddToCartDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCartDomain.swift; sourceTree = "<group>"; };
+		A3471C3C2AAA031400076AC2 /* PlusMinusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusMinusButton.swift; sourceTree = "<group>"; };
+		A3471C3E2AAA03E600076AC2 /* AddToCardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCardButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +100,9 @@
 		A3471C062AA9CF3E00076AC2 /* TCA_Basics_Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				A3471C342AA9E73400076AC2 /* Domain */,
+				A3471C3B2AA9F9B000076AC2 /* Products */,
+				A3471C342AA9E73400076AC2 /* AddToCart */,
 				A3471C072AA9CF3E00076AC2 /* TCA_Basics_TutorialApp.swift */,
-				A3471C092AA9CF3E00076AC2 /* ContentView.swift */,
 				A3471C0B2AA9CF4000076AC2 /* Assets.xcassets */,
 				A3471C0D2AA9CF4000076AC2 /* Preview Content */,
 			);
@@ -132,12 +134,29 @@
 			path = TCA_Basics_TutorialUITests;
 			sourceTree = "<group>";
 		};
-		A3471C342AA9E73400076AC2 /* Domain */ = {
+		A3471C342AA9E73400076AC2 /* AddToCart */ = {
 			isa = PBXGroup;
 			children = (
-				A3471C352AA9E75000076AC2 /* CounterDomain.swift */,
+				A3471C352AA9E75000076AC2 /* AddToCartDomain.swift */,
+				A3471C3C2AAA031400076AC2 /* PlusMinusButton.swift */,
+				A3471C3E2AAA03E600076AC2 /* AddToCardButton.swift */,
 			);
-			path = Domain;
+			path = AddToCart;
+			sourceTree = "<group>";
+		};
+		A3471C372AA9F7F000076AC2 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		A3471C3B2AA9F9B000076AC2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A3471C372AA9F7F000076AC2 /* Product */,
+			);
+			path = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,8 +295,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3471C0A2AA9CF3E00076AC2 /* ContentView.swift in Sources */,
-				A3471C362AA9E75000076AC2 /* CounterDomain.swift in Sources */,
+				A3471C3D2AAA031400076AC2 /* PlusMinusButton.swift in Sources */,
+				A3471C362AA9E75000076AC2 /* AddToCartDomain.swift in Sources */,
+				A3471C3F2AAA03E600076AC2 /* AddToCardButton.swift in Sources */,
 				A3471C082AA9CF3E00076AC2 /* TCA_Basics_TutorialApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

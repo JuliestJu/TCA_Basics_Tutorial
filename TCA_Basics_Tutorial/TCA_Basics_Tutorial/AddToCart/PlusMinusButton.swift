@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  PlusMinusButton.swift
 //  TCA_Basics_Tutorial
 //
 //  Created by Юлія Воротченко on 07.09.2023.
@@ -8,14 +8,14 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct ContentView: View {
-    let store: Store<CounterDomain.State, CounterDomain.Action>
+struct PlusMinusButton: View {
+    let store: Store<AddToCartDomain.State, AddToCartDomain.Action>
     
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             HStack {
                 Button {
-                    viewStore.send(.decreaseCounter)
+                    viewStore.send(.didTapMinusButton)
                 } label: {
                     Text("-")
                         .padding(10)
@@ -25,11 +25,11 @@ struct ContentView: View {
                 }
                 .buttonStyle(.plain)
                 
-                Text(viewStore.counter.description)
+                Text(viewStore.count.description)
                     .padding(5)
                 
                 Button {
-                    viewStore.send(.increaseCounter)
+                    viewStore.send(.didTapPlusButton)
                 } label: {
                     Text("+")
                         .padding(10)
@@ -44,7 +44,7 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(store: .init(initialState: CounterDomain.State()) {
-        CounterDomain()
+    PlusMinusButton(store: .init(initialState: AddToCartDomain.State()) {
+        AddToCartDomain()
     })
 }

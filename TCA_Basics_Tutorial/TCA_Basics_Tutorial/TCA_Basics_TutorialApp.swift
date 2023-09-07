@@ -12,8 +12,8 @@ import ComposableArchitecture
 struct TCA_Basics_TutorialApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(store: .init(initialState: CounterDomain.State()) {
-                CounterDomain()
+            PlusMinusButton(store: .init(initialState: AddToCartDomain.State()) {
+                AddToCartDomain()
             })
         }
     }
