@@ -12,9 +12,10 @@ import ComposableArchitecture
 struct TCA_Basics_TutorialApp: App {
     var body: some Scene {
         WindowGroup {
-            ProductCell(store: .init(initialState: ProductDomain.State(product: Product.sample[0]), reducer: {
-                ProductDomain()
-            }))
+            let state = ProductListDomain.State()
+            let reducer = ProductListDomain { Product.sample }
+            ProductListView(store: Store(initialState: state,
+                                         reducer: { reducer }))
         }
     }
 }

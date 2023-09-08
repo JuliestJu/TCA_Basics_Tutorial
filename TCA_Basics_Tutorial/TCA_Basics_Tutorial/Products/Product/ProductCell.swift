@@ -43,7 +43,9 @@ struct ProductCell: View {
 }
 
 #Preview {
-    ProductCell(store: .init(initialState: ProductDomain.State(product: Product.sample[0])) {
+    ProductCell(store: .init(initialState:
+        ProductDomain.State(id: UUID(),
+                            product: Product.sample[0])) {
         ProductDomain()
     })
 }
