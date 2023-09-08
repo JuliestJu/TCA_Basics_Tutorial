@@ -11,19 +11,40 @@ import ComposableArchitecture
 struct ProductListView: View {
     
     let store: Store<ProductListDomain.State, ProductListDomain.Action>
-    
+   
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
-            List {
-                let stores = self.store
-                    .scope(state: \.productList,
-                           action: ProductListDomain.Action.product(id:action:))
-                ForEachStore(stores) { store in
-                    ProductCell(store: store)
+            NavigationStack {
+                List {
+                    let stores = self.store
+                        .scope(state: \.productList,
+                               action: ProductListDomain.Action.product(id:action:))
+                    ForEachStore(stores) { store in
+                        ProductCell(store: store)
+                    }
                 }
-            }
-            .task {
-                viewStore.send(.fetchProducts)
+                .task {
+                    viewStore.send(.fetchProducts)
+                }
+                .navigationTitle("Products")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            viewStore.send(.setCart(isPresented: true))
+                        } label: {
+                            Text("Go to cart")
+                        }
+                    }
+                }
+                .sheet(
+                    isPresented: viewStore.binding(
+                        get: { $0.shouldOpenCart },
+                        send: ProductListDomain.Action.setCart(isPresented:)
+                    )
+                ) {
+                    CartListView()
+                }
+                    
             }
         }
     }

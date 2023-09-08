@@ -11,12 +11,14 @@ import ComposableArchitecture
 struct ProductListDomain: Reducer {
     struct State: Equatable {
         var productList: IdentifiedArrayOf<ProductDomain.State> = []
+        var shouldOpenCart: Bool = false
     }
     
     enum Action: Equatable {
         case fetchProducts
         case fetchProductResponse(TaskResult<[Product]>)
         case product(id: ProductDomain.State.ID, action: ProductDomain.Action)
+        case setCart(isPresented: Bool)
     }
    
     var fetchProducts: @Sendable () async throws -> [Product]
@@ -41,6 +43,9 @@ struct ProductListDomain: Reducer {
                 print("\(error) \n Unable fetch prducts")
                 return .none
             case .product:
+                return .none
+            case .setCart(let isPresented):
+                state.shouldOpenCart = isPresented
                 return .none
             }
         }
