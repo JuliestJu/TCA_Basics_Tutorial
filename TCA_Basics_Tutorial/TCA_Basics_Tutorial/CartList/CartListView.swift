@@ -6,13 +6,35 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct CartListView: View {
+    let store: Store<CartListDomain.State, CartListDomain.Action>
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        WithViewStore(self.store, observe: { $0 })  { viewStore in
+            List {
+                ForEachStore(
+                    self.store.scope(
+                        state: \.cartItems,
+                        action: CartListDomain.Action.cartItem(id:action:)
+                        
+                    )
+                ) {
+                    CartCell(store: $0)
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    CartListView()
+    let array = IdentifiedArrayOf(uniqueElements: CartItem.sample.map {
+        CartItemDomain.State(cartItem: $0,
+                             id: UUID())
+    })
+    return CartListView(store: Store(initialState: CartListDomain.State(cartItems: array),
+                              reducer: {
+        CartListDomain()
+    }))
 }

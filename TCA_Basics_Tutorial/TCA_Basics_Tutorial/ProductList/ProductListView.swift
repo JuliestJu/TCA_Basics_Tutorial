@@ -42,7 +42,15 @@ struct ProductListView: View {
                         send: ProductListDomain.Action.setCart(isPresented:)
                     )
                 ) {
-                    CartListView()
+                    let array = IdentifiedArrayOf(uniqueElements: CartItem.sample.map {
+                        CartItemDomain.State(cartItem: $0,
+                                             id: UUID())
+                    })
+                    CartListView(store: Store(initialState: CartListDomain.State(cartItems: array),
+                                              reducer: {
+                        CartListDomain()
+                    }))
+
                 }
                     
             }
