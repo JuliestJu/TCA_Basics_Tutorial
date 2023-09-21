@@ -15,7 +15,7 @@ struct CartItemDomain: Reducer {
     }
     
     enum Action: Equatable {
-        case any
+        case deleteCartItem
     }
     
     struct Environment {}
@@ -23,7 +23,8 @@ struct CartItemDomain: Reducer {
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
-            case .any: return .none
+            case .deleteCartItem: 
+                return .none
             }
         }
     }

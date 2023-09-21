@@ -41,7 +41,7 @@ struct CartCell: View {
                     }
                     
                 }
-//                ZStack {
+                ZStack {
                     Group {
                         Text("Quantity: ")
                         +
@@ -49,9 +49,19 @@ struct CartCell: View {
                             .fontWeight(.bold)
                     }
                     .font(.title2)
-                    .padding([.bottom, .top], 10)
-//                }
+                    HStack {
+                        Spacer()
+                        Button {
+                            viewStore.send(.deleteCartItem)
+                        } label: {
+                            Image(systemName: "trash.fill")
+                                .foregroundColor(.red)
+                                .padding()
+                        }
+                    }
+                }
             }
+            .padding([.bottom, .top], 10)
         }
     }
 }

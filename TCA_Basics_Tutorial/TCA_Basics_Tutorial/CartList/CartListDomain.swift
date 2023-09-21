@@ -26,9 +26,16 @@ struct CartListDomain: Reducer {
             switch action {
             case .didPressCloseButton:
                 return .none
-            case .cartItem:
+            case .cartItem(let id, let action):
+                switch action {
+                case .deleteCartItem:
+                    state.cartItems.remove(id: id)
+                }
                 return .none
             }
+        }.forEach(\.cartItems,
+                   action: /Action.cartItem(id:action:)) {
+            CartItemDomain()
         }
     }
 }

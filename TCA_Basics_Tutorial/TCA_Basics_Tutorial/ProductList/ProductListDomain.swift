@@ -71,5 +71,8 @@ struct ProductListDomain: Reducer {
         .forEach(\.productList, action: /ProductListDomain.Action.product(id:action:)) {
             ProductDomain()
         }
+        .ifLet(\.cartState, action: /ProductListDomain.Action.cart) {
+            CartListDomain()
+        }
     }
 }
