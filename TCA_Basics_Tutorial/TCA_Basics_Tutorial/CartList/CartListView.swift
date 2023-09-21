@@ -34,6 +34,26 @@ struct CartListView: View {
                         }
                     }
                 }
+                .onAppear {
+                    viewStore.send(.getTotalPrice)
+                }
+                .safeAreaInset(edge: .bottom) {
+                    Button {
+                        
+                    } label: {
+                        HStack(alignment: .center) {
+                            Spacer()
+                            Text("Pay \(viewStore.totalPriceString)")
+                                .font(.title)
+                                .foregroundStyle(.white)
+                            Spacer()
+                        }
+                    }
+                    .frame(maxWidth: .infinity, minHeight: 60)
+                    .background(.blue)
+                    .cornerRadius(10)
+                    .padding()
+                }
             }
         }
     }

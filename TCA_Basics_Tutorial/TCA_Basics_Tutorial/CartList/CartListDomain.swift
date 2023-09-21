@@ -12,11 +12,18 @@ struct CartListDomain: Reducer {
     
     struct State: Equatable {
         var cartItems: IdentifiedArrayOf<CartItemDomain.State> = []
+        var totalPrice: Double = 0.0
+        
+        var totalPriceString: String {
+            let roundedValue = round(totalPrice * 100) / 100
+            return "$\(roundedValue)"
+        }
     }
     
     enum Action: Equatable {
         case didPressCloseButton
         case cartItem(id: CartItemDomain.State.ID, action: CartItemDomain.Action)
+        case getTotalPrice
     }
     
     struct Environment {}
@@ -30,7 +37,13 @@ struct CartListDomain: Reducer {
                 switch action {
                 case .deleteCartItem:
                     state.cartItems.remove(id: id)
+                    return .send(.getTotalPrice)
                 }
+            case .getTotalPrice:
+                let items = state.cartItems.map { $0.cartItem }
+                state.totalPrice = items.reduce(0.0, {
+                    $0 + ($1.product.price * Double($1.quantity))
+                })
                 return .none
             }
         }.forEach(\.cartItems,

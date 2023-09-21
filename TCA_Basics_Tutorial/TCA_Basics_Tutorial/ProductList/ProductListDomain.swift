@@ -73,6 +73,7 @@ struct ProductListDomain: Reducer {
                         let productStateId = state.productList[index].id
                         state.productList[id: productStateId]?.count = 0
                     }
+                default: break
                 }
                 return .none
             }
