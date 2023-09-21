@@ -13,6 +13,7 @@ struct CartListDomain: Reducer {
     struct State: Equatable {
         var cartItems: IdentifiedArrayOf<CartItemDomain.State> = []
         var totalPrice: Double = 0.0
+        var isPayButtonDisabled = false
         
         var totalPriceString: String {
             let roundedValue = round(totalPrice * 100) / 100
@@ -44,11 +45,16 @@ struct CartListDomain: Reducer {
                 state.totalPrice = items.reduce(0.0, {
                     $0 + ($1.product.price * Double($1.quantity))
                 })
-                return .none
+                return CartListDomain.verifyPayButtonVisibility(state: &state)
             }
         }.forEach(\.cartItems,
                    action: /Action.cartItem(id:action:)) {
             CartItemDomain()
         }
+    }
+    
+    private static func verifyPayButtonVisibility(state: inout State) -> Effect<Action> {
+        state.isPayButtonDisabled = state.totalPrice == 0
+        return .none
     }
 }

@@ -50,9 +50,12 @@ struct CartListView: View {
                         }
                     }
                     .frame(maxWidth: .infinity, minHeight: 60)
-                    .background(.blue)
+                    .background(
+                        viewStore.isPayButtonDisabled ? .gray : .blue
+                    )
                     .cornerRadius(10)
                     .padding()
+                    .disabled(viewStore.isPayButtonDisabled)
                 }
             }
         }
