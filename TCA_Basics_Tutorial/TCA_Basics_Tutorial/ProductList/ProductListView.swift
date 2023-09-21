@@ -11,7 +11,7 @@ import ComposableArchitecture
 struct ProductListView: View {
     
     let store: Store<ProductListDomain.State, ProductListDomain.Action>
-   
+    
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             NavigationStack {
@@ -42,17 +42,11 @@ struct ProductListView: View {
                         send: ProductListDomain.Action.setCart(isPresented:)
                     )
                 ) {
-                    let array = IdentifiedArrayOf(uniqueElements: CartItem.sample.map {
-                        CartItemDomain.State(cartItem: $0,
-                                             id: UUID())
-                    })
-                    CartListView(store: Store(initialState: CartListDomain.State(cartItems: array),
-                                              reducer: {
-                        CartListDomain()
-                    }))
-
+                    IfLetStore(self.store.scope(state: \.cartState,
+                                                action: ProductListDomain.Action.cart)) { store in
+                        CartListView(store: store)
+                    }
                 }
-                    
             }
         }
     }

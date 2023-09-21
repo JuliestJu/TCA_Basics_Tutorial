@@ -49,6 +49,7 @@ struct CartCell: View {
                             .fontWeight(.bold)
                     }
                     .font(.title2)
+                    .padding([.bottom, .top], 10)
 //                }
             }
         }

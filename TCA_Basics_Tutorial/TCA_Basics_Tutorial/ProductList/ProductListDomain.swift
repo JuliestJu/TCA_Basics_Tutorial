@@ -11,6 +11,7 @@ import ComposableArchitecture
 struct ProductListDomain: Reducer {
     struct State: Equatable {
         var productList: IdentifiedArrayOf<ProductDomain.State> = []
+        var cartState: CartListDomain.State?
         var shouldOpenCart: Bool = false
     }
     
@@ -19,6 +20,7 @@ struct ProductListDomain: Reducer {
         case fetchProductResponse(TaskResult<[Product]>)
         case product(id: ProductDomain.State.ID, action: ProductDomain.Action)
         case setCart(isPresented: Bool)
+        case cart(CartListDomain.Action)
     }
    
     var fetchProducts: @Sendable () async throws -> [Product]
@@ -46,6 +48,23 @@ struct ProductListDomain: Reducer {
                 return .none
             case .setCart(let isPresented):
                 state.shouldOpenCart = isPresented
+                state.cartState = isPresented ?
+                CartListDomain.State(cartItems: IdentifiedArray(uniqueElements: state.productList.compactMap {
+                        $0.count > 0 ?
+                        CartItemDomain.State(cartItem: CartItem(product: $0.product,
+                                                                quantity: $0.count),
+                                             id: UUID())
+                        : nil
+                })) :
+                nil
+                return .none
+            case .cart(let action):
+                switch action {
+                case .didPressCloseButton:
+                    state.shouldOpenCart = false
+                case .cartItem:
+                    print("cartItem")
+                }
                 return .none
             }
         }

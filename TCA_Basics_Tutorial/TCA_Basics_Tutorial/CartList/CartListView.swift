@@ -13,15 +13,26 @@ struct CartListView: View {
     
     var body: some View {
         WithViewStore(self.store, observe: { $0 })  { viewStore in
-            List {
-                ForEachStore(
-                    self.store.scope(
-                        state: \.cartItems,
-                        action: CartListDomain.Action.cartItem(id:action:)
-                        
-                    )
-                ) {
-                    CartCell(store: $0)
+            NavigationStack {
+                List {
+                    ForEachStore(
+                        self.store.scope(
+                            state: \.cartItems,
+                            action: CartListDomain.Action.cartItem(id:action:)
+                        )
+                    ) {
+                        CartCell(store: $0)
+                    }
+                }
+                .navigationTitle("Cart")
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            viewStore.send(.didPressCloseButton)
+                        } label: {
+                            Text("Close")
+                        }
+                    }
                 }
             }
         }
