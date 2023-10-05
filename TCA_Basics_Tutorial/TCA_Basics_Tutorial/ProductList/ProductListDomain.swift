@@ -24,6 +24,7 @@ struct ProductListDomain: Reducer {
     }
    
     var fetchProducts: @Sendable () async throws -> [Product]
+     
     
     var body: some ReducerOf<Self> {
         Reduce { state, action in
@@ -82,7 +83,9 @@ struct ProductListDomain: Reducer {
             ProductDomain()
         }
         .ifLet(\.cartState, action: /ProductListDomain.Action.cart) {
-            CartListDomain()
+            CartListDomain { cartItem in
+                return "OLOLO"
+            }
         }
     }
 }

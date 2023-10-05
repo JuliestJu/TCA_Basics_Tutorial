@@ -39,7 +39,7 @@ struct CartListView: View {
                 }
                 .safeAreaInset(edge: .bottom) {
                     Button {
-                        
+                        viewStore.send(.didPressPayButton)
                     } label: {
                         HStack(alignment: .center) {
                             Spacer()
@@ -57,6 +57,10 @@ struct CartListView: View {
                     .padding()
                     .disabled(viewStore.isPayButtonDisabled)
                 }
+                .alert(
+                    store: self.store.scope(state: \.$confirmationAlert,
+                                            action: { .confirmationDialog($0) })
+                )
             }
         }
     }
@@ -68,7 +72,10 @@ struct CartListView: View {
                              id: UUID())
     })
     return CartListView(store: Store(initialState: CartListDomain.State(cartItems: array),
-                              reducer: {
-        CartListDomain()
+                                     reducer: {
+        CartListDomain { cartItem in
+            return cartItem.last?.product.title ?? "no product"
+        }
     }))
+    
 }
