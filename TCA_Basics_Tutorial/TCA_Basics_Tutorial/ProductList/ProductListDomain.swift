@@ -10,9 +10,17 @@ import ComposableArchitecture
 
 struct ProductListDomain: Reducer {
     struct State: Equatable {
+        var dataLoadingStatus = DataLoadingStatus.notStarted
         var productList: IdentifiedArrayOf<ProductDomain.State> = []
         @PresentationState var cartState: CartListDomain.State?
         var shouldOpenCart: Bool = false
+        
+        var shouldShowError: Bool {
+            self.dataLoadingStatus == .error
+        }
+        var isLoading: Bool {
+            self.dataLoadingStatus == .loading
+        }
     }
     
     enum Action: Equatable {
@@ -29,6 +37,11 @@ struct ProductListDomain: Reducer {
         Reduce { state, action in
             switch action {
             case .fetchProducts:
+                if state.dataLoadingStatus == .success ||
+                   state.dataLoadingStatus == .loading {
+                    return .none
+                }
+                state.dataLoadingStatus = .loading
                 return .run { send in
                     await send(
                         .fetchProductResponse(
@@ -37,11 +50,13 @@ struct ProductListDomain: Reducer {
                     )
                 }
             case .fetchProductResponse(.success(let products)):
+                state.dataLoadingStatus = .success
                 state.productList = IdentifiedArray(uniqueElements: products
                     .map { ProductDomain.State(id: UUID(), product: $0)}
                 )
                 return .none
             case .fetchProductResponse(.failure(let error)):
+                state.dataLoadingStatus = .error
                 print("\(error) \n Unable fetch prducts")
                 return .none
             case .product:

@@ -10,7 +10,7 @@ import Foundation
 struct APIClient {
     
     var fetchProducts: () async throws -> [Product]
-    var sedOrder: ([CartItem]) async throws -> String
+    var sendOrder: ([CartItem]) async throws -> String
     
     struct APIError: Error {}
 }
@@ -22,9 +22,9 @@ extension APIClient {
             .data(from: URL(string: "https://fakestoreapi.com/products")!)
         let products = try JSONDecoder().decode([Product].self, from: data)
         return products
-    } sedOrder: { cartItems in
+    } sendOrder: { cartItems in
         let payload = try JSONEncoder().encode(cartItems)
-        var urlRequest = URLRequest(url: URL(string: "https://fakestoreapi.com/carts")!)
+        var urlRequest = URLRequest(url: URL(string: "https://fakestoreapi.com/cartsz")!)
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.httpMethod = "POST"
         

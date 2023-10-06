@@ -12,12 +12,17 @@ struct CartListDomain: Reducer {
     
     // MARK: - State
     struct State: Equatable {
+        var dataLoadingStatus = DataLoadingStatus.notStarted
         var cartItems: IdentifiedArrayOf<CartItemDomain.State> = []
         var totalPrice: Double = 0.0
         var isPayButtonDisabled = false
         var totalPriceString: String {
             let roundedValue = round(totalPrice * 100) / 100
             return "$\(roundedValue)"
+        }
+        
+        var isRequestInProgress: Bool {
+            dataLoadingStatus == .loading
         }
         
         @PresentationState var purchaseConfirmationAlert: AlertState<Action.Alert>?
@@ -64,11 +69,13 @@ struct CartListDomain: Reducer {
             case .didPressPayButton:
                 return self.produceConfirmPaymentAlert(state: &state)
             case .didRecievePurchaseResponse(.success):
+                state.dataLoadingStatus = .success
                 return self.produceOrderResultAlert(state: &state, isSuccessfull: true)
             case .didRecievePurchaseResponse(.failure):
+                state.dataLoadingStatus = .error
                 return self.produceOrderResultAlert(state: &state, isSuccessfull: false)
             case .alert(.presented(.confirmPurchaseTapped)):
-                return self.confirmPurchase(state: state)
+                return self.confirmPurchase(state: &state)
             case .alert(.dismiss):
                 state.purchaseConfirmationAlert = nil
                 state.purchaseResponseAlert = nil
@@ -95,13 +102,14 @@ struct CartListDomain: Reducer {
         return .none
     }
     
-    private func confirmPurchase(state: CartListDomain.State) -> Effect<Action> {
+    private func confirmPurchase(state: inout CartListDomain.State) -> Effect<Action> {
+        state.dataLoadingStatus = .loading
         let items = state.cartItems.map { $0.cartItem }
         return .run { send in
             await send(
                 .didRecievePurchaseResponse(
                     TaskResult {
-                        try await APIClient.live.sedOrder(items)
+                        try await APIClient.live.sendOrder(items)
                     }
                 )
             )

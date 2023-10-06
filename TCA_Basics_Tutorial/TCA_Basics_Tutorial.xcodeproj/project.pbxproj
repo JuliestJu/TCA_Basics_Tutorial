@@ -27,6 +27,8 @@
 		A361EAEF2AB0AC8C00F96707 /* CartItemDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A361EAEE2AB0AC8C00F96707 /* CartItemDomain.swift */; };
 		A361EAF12AB0ADF900F96707 /* CartListDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A361EAF02AB0ADF900F96707 /* CartListDomain.swift */; };
 		A39360C22AD046B9007D9861 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39360C12AD046B9007D9861 /* APIClient.swift */; };
+		A39360C42AD05196007D9861 /* DataLoadingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39360C32AD05196007D9861 /* DataLoadingStatus.swift */; };
+		A39360C82AD054C1007D9861 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39360C72AD054C1007D9861 /* ErrorView.swift */; };
 		A3FAFBF32AB9AF8E00CBA5AD /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FAFBF22AB9AF8E00CBA5AD /* CartCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +72,8 @@
 		A361EAEE2AB0AC8C00F96707 /* CartItemDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemDomain.swift; sourceTree = "<group>"; };
 		A361EAF02AB0ADF900F96707 /* CartListDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListDomain.swift; sourceTree = "<group>"; };
 		A39360C12AD046B9007D9861 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		A39360C32AD05196007D9861 /* DataLoadingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingStatus.swift; sourceTree = "<group>"; };
+		A39360C72AD054C1007D9861 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		A3FAFBF22AB9AF8E00CBA5AD /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,6 +196,7 @@
 			children = (
 				A3471C482AAA267A00076AC2 /* ProductListDomain.swift */,
 				A3471C4A2AAB13EC00076AC2 /* ProductListView.swift */,
+				A39360C72AD054C1007D9861 /* ErrorView.swift */,
 			);
 			path = ProductList;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				A39360C12AD046B9007D9861 /* APIClient.swift */,
+				A39360C32AD05196007D9861 /* DataLoadingStatus.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -364,6 +370,7 @@
 				A3FAFBF32AB9AF8E00CBA5AD /* CartCell.swift in Sources */,
 				A3471C3D2AAA031400076AC2 /* PlusMinusButton.swift in Sources */,
 				A361EAED2AB0ABEE00F96707 /* CartItem.swift in Sources */,
+				A39360C82AD054C1007D9861 /* ErrorView.swift in Sources */,
 				A3471C432AAA05EE00076AC2 /* ProductDomain.swift in Sources */,
 				A3471C362AA9E75000076AC2 /* AddToCartDomain.swift in Sources */,
 				A3471C412AAA05AA00076AC2 /* Product.swift in Sources */,
@@ -374,6 +381,7 @@
 				A361EAEF2AB0AC8C00F96707 /* CartItemDomain.swift in Sources */,
 				A3471C4B2AAB13EC00076AC2 /* ProductListView.swift in Sources */,
 				A3471C082AA9CF3E00076AC2 /* TCA_Basics_TutorialApp.swift in Sources */,
+				A39360C42AD05196007D9861 /* DataLoadingStatus.swift in Sources */,
 				A3471C492AAA267A00076AC2 /* ProductListDomain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
