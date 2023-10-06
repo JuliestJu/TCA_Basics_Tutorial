@@ -11,7 +11,7 @@ import ComposableArchitecture
 struct ProductListDomain: Reducer {
     struct State: Equatable {
         var productList: IdentifiedArrayOf<ProductDomain.State> = []
-        var cartState: CartListDomain.State?
+        @PresentationState var cartState: CartListDomain.State?
         var shouldOpenCart: Bool = false
     }
     
@@ -84,7 +84,7 @@ struct ProductListDomain: Reducer {
         }
         .ifLet(\.cartState, action: /ProductListDomain.Action.cart) {
             CartListDomain { cartItem in
-                return "OLOLO"
+               return "CartItem"
             }
         }
     }

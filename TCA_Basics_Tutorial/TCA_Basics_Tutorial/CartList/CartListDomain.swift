@@ -19,21 +19,23 @@ struct CartListDomain: Reducer {
             return "$\(roundedValue)"
         }
         
-        @PresentationState var confirmationAlert: AlertState<Action.ConfirmationAlert>?
+        @PresentationState var purchaseConfirmationAlert: AlertState<Action.Alert>?
+        @PresentationState var purchaseResponseAlert: AlertState<Action.Alert>?
     }
     
     enum Action: Equatable {
-        case confirmationDialog(PresentationAction<ConfirmationAlert>)
+        case alert(PresentationAction<Alert>)
         case didPressPayButton
-        
         case didPressCloseButton
         case cartItem(id: CartItemDomain.State.ID, action: CartItemDomain.Action)
         case getTotalPrice
         case didRecievePurchaseResponse(TaskResult<String>)
         
-        enum ConfirmationAlert: Equatable {
+        enum Alert: Equatable {
             case cancelPurchaseTapped
             case confirmPurchaseTapped
+            case dismissSuccessAlertTapped
+            case dismissErrorAlertTapped
         }
     }
     
@@ -57,31 +59,23 @@ struct CartListDomain: Reducer {
                 })
                 return CartListDomain.verifyPayButtonVisibility(state: &state)
             case .didPressPayButton:
-                state.confirmationAlert = AlertState {
-                    TextState("Confirm your purchase")
-                } actions: {
-                    ButtonState(role: .destructive, action: .confirmPurchaseTapped) {
-                        TextState("Pay \(state.totalPriceString)")
-                    }
-                    ButtonState(role: .cancel, action: .cancelPurchaseTapped) {
-                        TextState("Cancel")
-                    }
-                } message: { [state] in
-                    TextState("Do you want to proceed with your purchace of \(state.totalPriceString)?")
-                }
-                return .none
-            case .didRecievePurchaseResponse(.success(let message)):
-                print(message)
-                return .none
-            case .didRecievePurchaseResponse(.failure(let error)):
-                print(error.localizedDescription)
-                return .none
-            case .confirmationDialog(.presented(.confirmPurchaseTapped)):
+                return self.produceConfirmPaymentAlert(state: &state)
+            case .didRecievePurchaseResponse(.success):
+                return self.produceOrderResultAlert(state: &state, isSuccessfull: true)
+            case .didRecievePurchaseResponse(.failure):
+                return self.produceOrderResultAlert(state: &state, isSuccessfull: false)
+            case .alert(.presented(.confirmPurchaseTapped)):
                 return self.confirmPurchase(state: state)
-            case .confirmationDialog(.dismiss):
-                state.confirmationAlert = nil
+            case .alert(.dismiss):
+                state.purchaseConfirmationAlert = nil
                 return .none
-            case .confirmationDialog(.presented(.cancelPurchaseTapped)):
+            case .alert(.presented(.cancelPurchaseTapped)):
+                return .none
+            case .alert(.presented(.dismissSuccessAlertTapped)):
+                state.purchaseResponseAlert = nil
+                return .none
+            case .alert(.presented(.dismissErrorAlertTapped)):
+                state.purchaseResponseAlert = nil
                 return .none
             }
         }
@@ -89,7 +83,8 @@ struct CartListDomain: Reducer {
                   action: /Action.cartItem(id:action:)) {
             CartItemDomain()
         }
-                  .ifLet(\.$confirmationAlert, action: /Action.confirmationDialog)
+        .ifLet(\.$purchaseConfirmationAlert, action: /Action.alert)
+        .ifLet(\.$purchaseResponseAlert, action: /Action.alert)
     }
     
     private static func verifyPayButtonVisibility(state: inout State) -> Effect<Action> {
@@ -109,4 +104,42 @@ struct CartListDomain: Reducer {
             )
         }
     }
+    
+    private func produceConfirmPaymentAlert(state: inout CartListDomain.State) -> Effect<Action> {
+        state.purchaseConfirmationAlert = AlertState {
+            TextState("Confirm your purchase")
+        } actions: {
+            ButtonState(role: .destructive, action: .confirmPurchaseTapped) {
+                TextState("Pay \(state.totalPriceString)")
+            }
+            ButtonState(role: .cancel, action: .cancelPurchaseTapped) {
+                TextState("Cancel")
+            }
+        } message: { [state] in
+            TextState("Do you want to proceed with your purchace of \(state.totalPriceString)?")
+        }
+        return .none
+    }
+    
+    private func produceOrderResultAlert(state: inout CartListDomain.State, isSuccessfull: Bool) -> Effect<Action> {
+        state.purchaseResponseAlert = AlertState {
+            isSuccessfull ? TextState("Thank You!") : TextState("Oops!")
+        } actions: {
+            isSuccessfull ?
+            ButtonState(role: .destructive, action: .dismissSuccessAlertTapped) {
+                TextState("Done")
+            }
+            :
+            ButtonState(role: .destructive, action: .dismissErrorAlertTapped) {
+                TextState("Done")
+            }
+        } message: {
+            isSuccessfull ?
+            TextState("Your order is is process")
+            :
+            TextState("Unable to send order, try again later")
+        }
+        return .none
+    }
+
 }

@@ -58,8 +58,12 @@ struct CartListView: View {
                     .disabled(viewStore.isPayButtonDisabled)
                 }
                 .alert(
-                    store: self.store.scope(state: \.$confirmationAlert,
-                                            action: { .confirmationDialog($0) })
+                    store: self.store.scope(state: \.$purchaseConfirmationAlert,
+                                            action: { .alert($0) })
+                )
+                .alert(
+                    store: self.store.scope(state: \.$purchaseResponseAlert,
+                                            action: { .alert($0) })
                 )
             }
         }
