@@ -26,6 +26,7 @@
 		A361EAED2AB0ABEE00F96707 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A361EAEC2AB0ABEE00F96707 /* CartItem.swift */; };
 		A361EAEF2AB0AC8C00F96707 /* CartItemDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A361EAEE2AB0AC8C00F96707 /* CartItemDomain.swift */; };
 		A361EAF12AB0ADF900F96707 /* CartListDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A361EAF02AB0ADF900F96707 /* CartListDomain.swift */; };
+		A39360C22AD046B9007D9861 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39360C12AD046B9007D9861 /* APIClient.swift */; };
 		A3FAFBF32AB9AF8E00CBA5AD /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FAFBF22AB9AF8E00CBA5AD /* CartCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		A361EAEC2AB0ABEE00F96707 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		A361EAEE2AB0AC8C00F96707 /* CartItemDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemDomain.swift; sourceTree = "<group>"; };
 		A361EAF02AB0ADF900F96707 /* CartListDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListDomain.swift; sourceTree = "<group>"; };
+		A39360C12AD046B9007D9861 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A3FAFBF22AB9AF8E00CBA5AD /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +102,7 @@
 		A3471BFB2AA9CF3E00076AC2 = {
 			isa = PBXGroup;
 			children = (
+				A39360C02AD046A1007D9861 /* Networking */,
 				A3471C062AA9CF3E00076AC2 /* TCA_Basics_Tutorial */,
 				A3471C172AA9CF4000076AC2 /* TCA_Basics_TutorialTests */,
 				A3471C212AA9CF4000076AC2 /* TCA_Basics_TutorialUITests */,
@@ -211,6 +214,14 @@
 				A3FAFBF22AB9AF8E00CBA5AD /* CartCell.swift */,
 			);
 			path = CartItem;
+			sourceTree = "<group>";
+		};
+		A39360C02AD046A1007D9861 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A39360C12AD046B9007D9861 /* APIClient.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +368,7 @@
 				A3471C362AA9E75000076AC2 /* AddToCartDomain.swift in Sources */,
 				A3471C412AAA05AA00076AC2 /* Product.swift in Sources */,
 				A3471C3F2AAA03E600076AC2 /* AddToCardButton.swift in Sources */,
+				A39360C22AD046B9007D9861 /* APIClient.swift in Sources */,
 				A361EAF12AB0ADF900F96707 /* CartListDomain.swift in Sources */,
 				A3471C452AAA117200076AC2 /* ProductCell.swift in Sources */,
 				A361EAEF2AB0AC8C00F96707 /* CartItemDomain.swift in Sources */,

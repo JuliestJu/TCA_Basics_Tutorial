@@ -71,14 +71,13 @@ struct CartListDomain: Reducer {
                 return self.confirmPurchase(state: state)
             case .alert(.dismiss):
                 state.purchaseConfirmationAlert = nil
+                state.purchaseResponseAlert = nil
                 return .none
             case .alert(.presented(.cancelPurchaseTapped)):
                 return .none
             case .alert(.presented(.dismissSuccessAlertTapped)):
-                state.purchaseResponseAlert = nil
                 return .none
             case .alert(.presented(.dismissErrorAlertTapped)):
-                state.purchaseResponseAlert = nil
                 return .none
             }
         }
@@ -102,7 +101,7 @@ struct CartListDomain: Reducer {
             await send(
                 .didRecievePurchaseResponse(
                     TaskResult {
-                        try await self.sendOrder(items)
+                        try await APIClient.live.sedOrder(items)
                     }
                 )
             )
@@ -130,11 +129,11 @@ struct CartListDomain: Reducer {
             isSuccessfull ? TextState("Thank You!") : TextState("Oops!")
         } actions: {
             isSuccessfull ?
-            ButtonState(role: .destructive, action: .dismissSuccessAlertTapped) {
+            ButtonState(role: .none, action: .dismissSuccessAlertTapped) {
                 TextState("Done")
             }
             :
-            ButtonState(role: .destructive, action: .dismissErrorAlertTapped) {
+            ButtonState(role: .none, action: .dismissErrorAlertTapped) {
                 TextState("Done")
             }
         } message: {
