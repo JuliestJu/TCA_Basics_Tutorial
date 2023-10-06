@@ -24,7 +24,7 @@ extension APIClient {
         return products
     } sendOrder: { cartItems in
         let payload = try JSONEncoder().encode(cartItems)
-        var urlRequest = URLRequest(url: URL(string: "https://fakestoreapi.com/cartsz")!)
+        var urlRequest = URLRequest(url: URL(string: "https://fakestoreapi.com/carts")!)
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.httpMethod = "POST"
         
