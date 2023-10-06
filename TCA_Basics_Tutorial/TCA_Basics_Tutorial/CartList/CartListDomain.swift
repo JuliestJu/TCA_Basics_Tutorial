@@ -10,6 +10,7 @@ import ComposableArchitecture
 
 struct CartListDomain: Reducer {
     
+    // MARK: - State
     struct State: Equatable {
         var cartItems: IdentifiedArrayOf<CartItemDomain.State> = []
         var totalPrice: Double = 0.0
@@ -23,6 +24,7 @@ struct CartListDomain: Reducer {
         @PresentationState var purchaseResponseAlert: AlertState<Action.Alert>?
     }
     
+    // MARK: - Actions
     enum Action: Equatable {
         case alert(PresentationAction<Alert>)
         case didPressPayButton
@@ -39,6 +41,7 @@ struct CartListDomain: Reducer {
         }
     }
     
+    // MARK: - Public properties
     var sendOrder: ([CartItem]) async throws -> String
     
     var body: some ReducerOf<Self> {
@@ -87,6 +90,7 @@ struct CartListDomain: Reducer {
         .ifLet(\.$purchaseResponseAlert, action: /Action.alert)
     }
     
+    // MARK: - Private methods
     private static func verifyPayButtonVisibility(state: inout State) -> Effect<Action> {
         state.isPayButtonDisabled = state.totalPrice == 0
         return .none
@@ -141,5 +145,4 @@ struct CartListDomain: Reducer {
         }
         return .none
     }
-
 }

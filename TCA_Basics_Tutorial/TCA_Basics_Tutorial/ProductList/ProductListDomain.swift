@@ -24,7 +24,6 @@ struct ProductListDomain: Reducer {
     }
    
     var fetchProducts: @Sendable () async throws -> [Product]
-     
     
     var body: some ReducerOf<Self> {
         Reduce { state, action in
@@ -66,14 +65,10 @@ struct ProductListDomain: Reducer {
                 case .cartItem(_, let action):
                     switch action {
                     case .deleteCartItem(let product):
-                        guard let index = state.productList.firstIndex(where: {
-                            $0.product.id == product.id
-                        }) else {
-                            return .none
-                        }
-                        let productStateId = state.productList[index].id
-                        state.productList[id: productStateId]?.count = 0
+                        return self.deleteCartItems(for: product, on: &state)
                     }
+                case .alert(let alert):
+                    return proceedCartListAlerts(actions: alert, state: &state)
                 default: break
                 }
                 return .none
@@ -87,5 +82,39 @@ struct ProductListDomain: Reducer {
                return "CartItem"
             }
         }
+    }
+    
+    // MARK: - Private methods
+    
+    private func deleteCartItems(for product: Product, on state: inout State) -> Effect<Action> {
+        guard let index = state.productList.firstIndex(where: {
+            $0.product.id == product.id
+        }) else {
+            return .none
+        }
+        let productStateId = state.productList[index].id
+        state.productList[id: productStateId]?.count = 0
+        return .none
+    }
+    
+    private func proceedCartListAlerts(actions: PresentationAction<CartListDomain.Action.Alert>,
+                       state: inout State) -> Effect<Action> {
+        switch actions {
+        case .presented(let aa):
+            switch aa {
+            case .dismissSuccessAlertTapped:
+                self.resetProductsCounters(state: &state)
+                state.shouldOpenCart = false
+                return .none
+            default: return .none
+            }
+        case .dismiss: return .none
+        }
+    }
+    
+    private func resetProductsCounters(state: inout State) {
+        state.productList
+            .map { $0.id }
+            .forEach { state.productList[id: $0]?.count = 0 }
     }
 }
