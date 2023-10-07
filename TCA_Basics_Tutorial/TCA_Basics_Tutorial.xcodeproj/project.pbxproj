@@ -29,6 +29,10 @@
 		A39360C22AD046B9007D9861 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39360C12AD046B9007D9861 /* APIClient.swift */; };
 		A39360C42AD05196007D9861 /* DataLoadingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39360C32AD05196007D9861 /* DataLoadingStatus.swift */; };
 		A39360C82AD054C1007D9861 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39360C72AD054C1007D9861 /* ErrorView.swift */; };
+		A39360CB2AD17623007D9861 /* RootDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39360CA2AD17623007D9861 /* RootDomain.swift */; };
+		A39360CE2AD17779007D9861 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39360CD2AD17779007D9861 /* UserProfile.swift */; };
+		A39360D02AD17B1D007D9861 /* ProfileDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39360CF2AD17B1D007D9861 /* ProfileDomain.swift */; };
+		A39360D22AD17E28007D9861 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39360D12AD17E28007D9861 /* ProfileView.swift */; };
 		A3FAFBF32AB9AF8E00CBA5AD /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FAFBF22AB9AF8E00CBA5AD /* CartCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +78,10 @@
 		A39360C12AD046B9007D9861 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		A39360C32AD05196007D9861 /* DataLoadingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingStatus.swift; sourceTree = "<group>"; };
 		A39360C72AD054C1007D9861 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		A39360CA2AD17623007D9861 /* RootDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDomain.swift; sourceTree = "<group>"; };
+		A39360CD2AD17779007D9861 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		A39360CF2AD17B1D007D9861 /* ProfileDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDomain.swift; sourceTree = "<group>"; };
+		A39360D12AD17E28007D9861 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A3FAFBF22AB9AF8E00CBA5AD /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,7 +135,8 @@
 		A3471C062AA9CF3E00076AC2 /* TCA_Basics_Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				A3471C072AA9CF3E00076AC2 /* TCA_Basics_TutorialApp.swift */,
+				A39360CC2AD17766007D9861 /* Profile */,
+				A39360C92AD1760A007D9861 /* Root */,
 				A3471C4C2AAB1EBD00076AC2 /* CartList */,
 				A3471C462AAA264F00076AC2 /* ProductList */,
 				A3471C3B2AA9F9B000076AC2 /* Products */,
@@ -228,6 +237,25 @@
 				A39360C32AD05196007D9861 /* DataLoadingStatus.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		A39360C92AD1760A007D9861 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				A3471C072AA9CF3E00076AC2 /* TCA_Basics_TutorialApp.swift */,
+				A39360CA2AD17623007D9861 /* RootDomain.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		A39360CC2AD17766007D9861 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A39360CD2AD17779007D9861 /* UserProfile.swift */,
+				A39360CF2AD17B1D007D9861 /* ProfileDomain.swift */,
+				A39360D12AD17E28007D9861 /* ProfileView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,6 +397,7 @@
 				A3471C4E2AAB1ED700076AC2 /* CartListView.swift in Sources */,
 				A3FAFBF32AB9AF8E00CBA5AD /* CartCell.swift in Sources */,
 				A3471C3D2AAA031400076AC2 /* PlusMinusButton.swift in Sources */,
+				A39360D02AD17B1D007D9861 /* ProfileDomain.swift in Sources */,
 				A361EAED2AB0ABEE00F96707 /* CartItem.swift in Sources */,
 				A39360C82AD054C1007D9861 /* ErrorView.swift in Sources */,
 				A3471C432AAA05EE00076AC2 /* ProductDomain.swift in Sources */,
@@ -377,11 +406,14 @@
 				A3471C3F2AAA03E600076AC2 /* AddToCardButton.swift in Sources */,
 				A39360C22AD046B9007D9861 /* APIClient.swift in Sources */,
 				A361EAF12AB0ADF900F96707 /* CartListDomain.swift in Sources */,
+				A39360CB2AD17623007D9861 /* RootDomain.swift in Sources */,
 				A3471C452AAA117200076AC2 /* ProductCell.swift in Sources */,
 				A361EAEF2AB0AC8C00F96707 /* CartItemDomain.swift in Sources */,
+				A39360CE2AD17779007D9861 /* UserProfile.swift in Sources */,
 				A3471C4B2AAB13EC00076AC2 /* ProductListView.swift in Sources */,
 				A3471C082AA9CF3E00076AC2 /* TCA_Basics_TutorialApp.swift in Sources */,
 				A39360C42AD05196007D9861 /* DataLoadingStatus.swift in Sources */,
+				A39360D22AD17E28007D9861 /* ProfileView.swift in Sources */,
 				A3471C492AAA267A00076AC2 /* ProductListDomain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
