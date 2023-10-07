@@ -33,6 +33,7 @@
 		A39360CE2AD17779007D9861 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39360CD2AD17779007D9861 /* UserProfile.swift */; };
 		A39360D02AD17B1D007D9861 /* ProfileDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39360CF2AD17B1D007D9861 /* ProfileDomain.swift */; };
 		A39360D22AD17E28007D9861 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39360D12AD17E28007D9861 /* ProfileView.swift */; };
+		A3AC726C2AD187E40086726E /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3AC726B2AD187E40086726E /* RootView.swift */; };
 		A3FAFBF32AB9AF8E00CBA5AD /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FAFBF22AB9AF8E00CBA5AD /* CartCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		A39360CD2AD17779007D9861 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		A39360CF2AD17B1D007D9861 /* ProfileDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDomain.swift; sourceTree = "<group>"; };
 		A39360D12AD17E28007D9861 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		A3AC726B2AD187E40086726E /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		A3FAFBF22AB9AF8E00CBA5AD /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,6 +246,7 @@
 			children = (
 				A3471C072AA9CF3E00076AC2 /* TCA_Basics_TutorialApp.swift */,
 				A39360CA2AD17623007D9861 /* RootDomain.swift */,
+				A3AC726B2AD187E40086726E /* RootView.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				A3471C362AA9E75000076AC2 /* AddToCartDomain.swift in Sources */,
 				A3471C412AAA05AA00076AC2 /* Product.swift in Sources */,
 				A3471C3F2AAA03E600076AC2 /* AddToCardButton.swift in Sources */,
+				A3AC726C2AD187E40086726E /* RootView.swift in Sources */,
 				A39360C22AD046B9007D9861 /* APIClient.swift in Sources */,
 				A361EAF12AB0ADF900F96707 /* CartListDomain.swift in Sources */,
 				A39360CB2AD17623007D9861 /* RootDomain.swift in Sources */,

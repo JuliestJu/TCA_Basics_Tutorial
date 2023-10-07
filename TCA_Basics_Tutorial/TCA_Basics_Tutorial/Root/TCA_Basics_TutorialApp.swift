@@ -12,10 +12,11 @@ import ComposableArchitecture
 struct TCA_Basics_TutorialApp: App {
     var body: some Scene {
         WindowGroup {
-            let state = ProductListDomain.State()
-            let reducer = ProductListDomain { try await APIClient.live.fetchProducts() }
-            ProductListView(store: Store(initialState: state,
-                                         reducer: { reducer }))
+            RootView(store: Store(initialState: RootDomain.State(), reducer: {
+                RootDomain(fetchProducts: APIClient.live.fetchProducts,
+                           sendOrder: APIClient.live.sendOrder,
+                           fetchUserProfile: APIClient.live.fetchUserProfile)
+            }))
         }
     }
 }

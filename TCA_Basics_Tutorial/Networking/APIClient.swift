@@ -8,9 +8,9 @@
 import Foundation
 
 struct APIClient {
-    
     var fetchProducts: () async throws -> [Product]
     var sendOrder: ([CartItem]) async throws -> String
+    var fetchUserProfile: () async throws -> UserProfile
     
     struct APIError: Error {}
 }
@@ -34,6 +34,11 @@ extension APIClient {
         }
         
         return "Status \(httpResponse.statusCode)"
+    } fetchUserProfile: {
+        let (data, _) = try await URLSession.shared
+            .data(from: URL(string: "https://fakestoreapi.com/users/1")!)
+        let userProfile = try JSONDecoder().decode(UserProfile.self, from: data)
+        return userProfile
     }
 
 }
