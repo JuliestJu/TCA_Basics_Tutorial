@@ -12,13 +12,36 @@ struct ProfileView: View {
     let store: Store<ProfileDomain.State, ProfileDomain.Action>
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            NavigationView {
+                Form {
+                    Section {
+                        Text(viewStore.profile.firstName.capitalized)
+                        +
+                        Text(" ")
+                        +
+                        Text(viewStore.profile.lastName.capitalized)
+                    } header: {
+                        Text("Full name")
+                    }
+                    Section {
+                        Text(viewStore.profile.email)
+                    } header: {
+                        Text("Email")
+                    }
+                }
+                .task {
+                    viewStore.send(.fetchUserProfile)
+                }
+                .navigationTitle("Profile")
+            }
+        }
     }
 }
 
 #Preview {
     let state = ProfileDomain.State(profile: .default)
-    let reducer = ProfileDomain { UserProfile.sample }
+    let reducer = ProfileDomain { .default }
     return ProfileView(store: Store(initialState: state,
                                     reducer: { reducer }))
 }

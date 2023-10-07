@@ -26,7 +26,7 @@ struct RootDomain: Reducer {
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
-            default: break
+            default: return .none
             }
         }
     }
